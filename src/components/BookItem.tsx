@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
+import { BookOpen } from 'lucide-react';
 
 interface BookItemProps {
   id: string;
