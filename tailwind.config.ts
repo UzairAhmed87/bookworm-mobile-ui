@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -12,7 +13,7 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: '1rem',
 			screens: {
 				'2xl': '1400px'
 			}
@@ -61,6 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				library: {
+					primary: '#2563eb',
+					secondary: '#94a3b8',
+					accent: '#ef4444',
+					background: '#f8fafc',
+					text: '#334155',
+					heading: '#1e293b',
+					muted: '#cbd5e1'
 				}
 			},
 			borderRadius: {
