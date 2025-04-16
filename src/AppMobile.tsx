@@ -12,9 +12,13 @@ import BookDetailScreen from './screens/mobile/BookDetailScreen';
 import BorrowedBooksScreen from './screens/mobile/BorrowedBooksScreen';
 import ProfileScreen from './screens/mobile/ProfileScreen';
 import NotFoundScreen from './screens/mobile/NotFoundScreen';
+import LoginScreen from './screens/mobile/LoginScreen';
+import RegisterScreen from './screens/mobile/RegisterScreen';
 
 // Create a type for the RootStackParamList
 export type RootStackParamList = {
+  Login: undefined;
+  Register: undefined;
   Home: undefined;
   Search: undefined;
   BookDetail: { id: string };
@@ -32,11 +36,13 @@ const AppMobile = () => {
       <QueryClientProvider client={queryClient}>
         <NavigationContainer>
           <Stack.Navigator
-            id={undefined}
             screenOptions={{
               headerShown: false,
             }}
+            initialRouteName="Login"
           >
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Register" component={RegisterScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Search" component={SearchScreen} />
             <Stack.Screen name="BookDetail" component={BookDetailScreen} />
@@ -51,4 +57,3 @@ const AppMobile = () => {
 };
 
 export default AppMobile;
-
