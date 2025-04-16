@@ -14,7 +14,7 @@ import ProfileScreen from './screens/mobile/ProfileScreen';
 import NotFoundScreen from './screens/mobile/NotFoundScreen';
 
 // Create a type for the RootStackParamList
-type RootStackParamList = {
+export type RootStackParamList = {
   Home: undefined;
   Search: undefined;
   BookDetail: { id: string };
@@ -32,6 +32,7 @@ const AppMobile = () => {
       <QueryClientProvider client={queryClient}>
         <NavigationContainer>
           <Stack.Navigator
+            id="RootNavigator"
             screenOptions={{
               headerShown: false,
             }}
