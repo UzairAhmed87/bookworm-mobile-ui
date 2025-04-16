@@ -32,7 +32,6 @@ const AppMobile = () => {
       <QueryClientProvider client={queryClient}>
         <NavigationContainer>
           <Stack.Navigator
-            id="RootNavigator"
             screenOptions={{
               headerShown: false,
             }}
@@ -51,3 +50,4 @@ const AppMobile = () => {
 };
 
 export default AppMobile;
+
