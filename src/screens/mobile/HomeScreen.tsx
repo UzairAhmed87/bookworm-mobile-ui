@@ -12,14 +12,14 @@ const featuredBooks = [
     id: '1',
     title: 'The Great Gatsby',
     authors: ['F. Scott Fitzgerald'],
-    status: 'Available',
+    status: 'Available' as const,
     callNumber: 'F FITZ',
   },
   {
     id: '2',
     title: 'To Kill a Mockingbird',
     authors: ['Harper Lee'],
-    status: 'Checked out',
+    status: 'Checked out' as const,
     dueDate: 'May 15, 2023',
     callNumber: 'F LEE',
   },
@@ -27,7 +27,7 @@ const featuredBooks = [
     id: '3',
     title: '1984',
     authors: ['George Orwell'],
-    status: 'Available',
+    status: 'Available' as const,
     callNumber: 'F ORW',
   }
 ];
@@ -37,14 +37,14 @@ const popularBooks = [
     id: '4',
     title: 'Harry Potter and the Sorcerer\'s Stone',
     authors: ['J.K. Rowling'],
-    status: 'Available',
+    status: 'Available' as const,
     callNumber: 'YA ROW',
   },
   {
     id: '5',
     title: 'The Hunger Games',
     authors: ['Suzanne Collins'],
-    status: 'Checked out',
+    status: 'Checked out' as const,
     dueDate: 'May 20, 2023',
     callNumber: 'YA COL',
   }

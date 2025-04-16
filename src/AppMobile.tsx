@@ -13,7 +13,17 @@ import BorrowedBooksScreen from './screens/mobile/BorrowedBooksScreen';
 import ProfileScreen from './screens/mobile/ProfileScreen';
 import NotFoundScreen from './screens/mobile/NotFoundScreen';
 
-const Stack = createNativeStackNavigator();
+// Create a type for the RootStackParamList
+type RootStackParamList = {
+  Home: undefined;
+  Search: undefined;
+  BookDetail: { id: string };
+  Borrowed: undefined;
+  Profile: undefined;
+  NotFound: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const queryClient = new QueryClient();
 
 const AppMobile = () => {

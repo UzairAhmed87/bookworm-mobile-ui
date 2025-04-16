@@ -12,7 +12,7 @@ const borrowedBooks = [
     id: '2',
     title: 'To Kill a Mockingbird',
     authors: ['Harper Lee'],
-    status: 'Checked out',
+    status: 'Checked out' as const,
     dueDate: 'May 15, 2023',
     callNumber: 'F LEE',
   },
@@ -20,7 +20,7 @@ const borrowedBooks = [
     id: '5',
     title: 'The Hunger Games',
     authors: ['Suzanne Collins'],
-    status: 'Checked out',
+    status: 'Checked out' as const,
     dueDate: 'May 20, 2023',
     callNumber: 'YA COL',
   }

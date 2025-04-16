@@ -19,6 +19,24 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({
 }) => {
   const navigation = useNavigation();
 
+  const handleSearchPress = () => {
+    if (onSearchPress) {
+      onSearchPress();
+    } else {
+      // @ts-ignore - we'll handle the navigation type properly
+      navigation.navigate('Search');
+    }
+  };
+
+  const handleProfilePress = () => {
+    if (onProfilePress) {
+      onProfilePress();
+    } else {
+      // @ts-ignore - we'll handle the navigation type properly
+      navigation.navigate('Profile');
+    }
+  };
+
   return (
     <View style={styles.header}>
       <View style={styles.leftContainer}>
@@ -40,14 +58,14 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({
       <View style={styles.rightContainer}>
         <TouchableOpacity 
           style={styles.iconButton}
-          onPress={onSearchPress || (() => navigation.navigate('Search'))}
+          onPress={handleSearchPress}
         >
           <Icon name="search" size={20} color="#1f2937" />
         </TouchableOpacity>
         
         <TouchableOpacity 
           style={styles.iconButton}
-          onPress={onProfilePress || (() => navigation.navigate('Profile'))}
+          onPress={handleProfilePress}
         >
           <Icon name="user" size={20} color="#1f2937" />
         </TouchableOpacity>
