@@ -1,76 +1,65 @@
-
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface BookItemProps {
-  id: string;
-  title: string;
-  authors: string[];
-  callNumber?: string;
-  status: 'Available' | 'Checked out';
-  dueDate?: string;
-  coverImage?: string;
+  book: {
+    title: string;
+    authors: string[];
+    callNumber?: string;
+    status: 'Available' | 'Checked out';
+    dueDate?: string;
+    coverImage?: string;
+  };
+  onPress: () => void;
 }
 
-const BookItem: React.FC<BookItemProps> = ({
-  id,
-  title,
-  authors,
-  callNumber,
-  status,
-  dueDate,
-  coverImage,
-}) => {
-  const navigation = useNavigation();
-
-  const handlePress = () => {
-    // @ts-ignore - we'll handle the navigation type properly
-    navigation.navigate('BookDetail', { id });
-  };
+const BookItem: React.FC<BookItemProps> = ({ book, onPress }) => {
+  const { 
+    title, 
+    authors, 
+    callNumber, 
+    status, 
+    dueDate, 
+    coverImage 
+  } = book;
 
   return (
-    <TouchableOpacity 
-      style={styles.container}
-      onPress={handlePress}
-    >
-      <View style={styles.row}>
-        <View style={styles.coverContainer}>
-          {coverImage ? (
-            <Image source={{ uri: coverImage }} style={styles.cover} />
-          ) : (
-            <View style={styles.placeholderCover}>
-              <Icon name="book-open" size={24} color="#a0aec0" />
-            </View>
-          )}
-        </View>
-        
-        <View style={styles.infoContainer}>
-          <Text style={styles.title} numberOfLines={1}>{title}</Text>
-          <Text style={styles.authors} numberOfLines={1}>{authors.join(', ')}</Text>
-          
-          {callNumber && (
-            <Text style={styles.callNumber}>Call number: {callNumber}</Text>
-          )}
-          
-          <View style={styles.statusContainer}>
-            <View style={[
-              styles.badge,
-              status === 'Available' ? styles.availableBadge : styles.checkedOutBadge
-            ]}>
-              <Text style={[
-                styles.badgeText,
-                status === 'Available' ? styles.availableText : styles.checkedOutText
-              ]}>
-                {status}
-              </Text>
-            </View>
-            
-            {dueDate && status === 'Checked out' && (
-              <Text style={styles.dueDate}>Due: {dueDate}</Text>
-            )}
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <View style={styles.coverContainer}>
+        {coverImage ? (
+          <Image source={{ uri: coverImage }} style={styles.cover} />
+        ) : (
+          <View style={styles.placeholderCover}>
+            <Ionicons name="book-outline" size={24} color="#a0aec0" />
           </View>
+        )}
+      </View>
+      
+      <View style={styles.infoContainer}>
+        <Text style={styles.title} numberOfLines={2}>{title}</Text>
+        <Text style={styles.authors} numberOfLines={1}>{authors.join(', ')}</Text>
+        
+        {callNumber && (
+          <Text style={styles.callNumber}>Call number: {callNumber}</Text>
+        )}
+        
+        <View style={styles.statusContainer}>
+          <View style={[
+            styles.badge,
+            status === 'Available' ? styles.availableBadge : styles.checkedOutBadge
+          ]}>
+            <Text style={[
+              styles.badgeText,
+              status === 'Available' ? styles.availableText : styles.checkedOutText
+            ]}>
+              {status}
+            </Text>
+          </View>
+          
+          {dueDate && status === 'Checked out' && (
+            <Text style={styles.dueDate}>Due: {dueDate}</Text>
+          )}
         </View>
       </View>
     </TouchableOpacity>
@@ -79,27 +68,22 @@ const BookItem: React.FC<BookItemProps> = ({
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
     padding: 12,
-    backgroundColor: 'white',
-    borderRadius: 8,
-    marginBottom: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 2,
   },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-  },
   coverContainer: {
-    width: 64,
-    height: 80,
-    marginRight: 16,
-    backgroundColor: '#f3f4f6',
-    borderRadius: 4,
+    width: 80,
+    height: 110,
+    borderRadius: 6,
     overflow: 'hidden',
+    backgroundColor: '#f3f4f6',
   },
   cover: {
     width: '100%',
@@ -107,33 +91,34 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   placeholderCover: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   infoContainer: {
     flex: 1,
+    marginLeft: 12,
+    justifyContent: 'space-between',
   },
   title: {
     fontSize: 16,
-    fontWeight: '500',
-    color: '#1a202c',
+    fontWeight: '600',
+    color: '#1f2937',
+    marginBottom: 4,
   },
   authors: {
     fontSize: 14,
-    color: '#4a5568',
-    marginTop: 4,
+    color: '#4b5563',
+    marginBottom: 4,
   },
   callNumber: {
     fontSize: 12,
-    color: '#718096',
-    marginTop: 4,
+    color: '#6b7280',
+    marginBottom: 8,
   },
   statusContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 8,
   },
   badge: {
     paddingHorizontal: 8,
@@ -142,26 +127,26 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   availableBadge: {
-    borderColor: '#48bb78',
-    backgroundColor: 'transparent',
+    borderColor: '#10b981',
+    backgroundColor: 'rgba(16, 185, 129, 0.1)',
   },
   checkedOutBadge: {
-    backgroundColor: '#f3f4f6',
-    borderColor: '#f3f4f6',
+    borderColor: '#f59e0b',
+    backgroundColor: 'rgba(245, 158, 11, 0.1)',
   },
   badgeText: {
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: '500',
   },
   availableText: {
-    color: '#48bb78',
+    color: '#10b981',
   },
   checkedOutText: {
-    color: '#ed8936',
+    color: '#f59e0b',
   },
   dueDate: {
     fontSize: 12,
-    color: '#718096',
+    color: '#6b7280',
     marginLeft: 8,
   },
 });
