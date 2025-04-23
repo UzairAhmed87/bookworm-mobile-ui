@@ -5,202 +5,79 @@
 
 @layer base {
   :root {
-    --background: 216 72% 20%;
-    --foreground: 214 100% 98%;
+    --background: 0 0% 100%; /* White background */
+    --foreground: 220 70% 20%; /* Dark blue text */
 
-    --card: 214 62% 23%;
-    --card-foreground: 214 100% 98%;
+    --card: 220 70% 95%; /* Very light blue for cards */
+    --card-foreground: 220 70% 20%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 222.2 84% 98%;
+    --primary: 220 70% 40%; /* Vibrant blue for primary elements */
+    --primary-foreground: 0 0% 100%;
 
-    --primary: 218 70% 20%;
-    --primary-foreground: 214 100% 99%;
+    --secondary: 220 50% 80%; /* Softer blue for secondary elements */
+    --secondary-foreground: 220 70% 20%;
 
-    --secondary: 213 41% 36%;
-    --secondary-foreground: 220 78% 96%;
-
-    --muted: 218 50% 82%;
-    --muted-foreground: 215 22% 70%;
-
-    --accent: 215 72% 85%;
-    --accent-foreground: 216 72% 22%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 218 24% 62%;
-    --input: 218 24% 62%;
-    --ring: 218 70% 19%;
-
-    --radius: 0.75rem;
-  }
-
-  .dark {
-    --background: 215 50% 10%;
-    --foreground: 214 100% 98%;
-    --card: 214 62% 18%;
-    --card-foreground: 214 100% 98%;
-    --popover: 214 62% 18%;
-    --popover-foreground: 214 100% 98%;
-    --primary: 218 70% 15%;
-    --primary-foreground: 214 100% 99%;
-    --secondary: 213 41% 28%;
-    --secondary-foreground: 220 78% 96%;
-    --muted: 218 50% 28%;
-    --muted-foreground: 215 22% 80%;
-    --accent: 215 72% 32%;
-    --accent-foreground: 216 72% 98%;
-    --border: 215 32% 26%;
-    --input: 215 32% 26%;
-    --ring: 218 70% 89%;
-  }
-
-  * {
-    @apply border-border;
+    --accent: 220 70% 90%; /* Light blue accent */
+    --accent-foreground: 220 70% 20%;
   }
 
   body {
     @apply bg-background text-foreground font-sans;
-    background: linear-gradient(120deg,#14366a 60%, #2563eb 100%);
     min-height: 100vh;
   }
 
   .mobile-container {
-    @apply max-w-md mx-auto pb-16 min-h-screen relative;
-    background: none;
+    @apply max-w-md mx-auto pb-16 min-h-screen relative bg-white;
   }
 
   .mobile-header {
-    @apply sticky top-0 z-10 bg-[#153563]/90 border-b px-4 py-3 flex items-center justify-between;
+    @apply sticky top-0 z-10 bg-primary/90 border-b px-4 py-3 flex items-center justify-between text-white;
     backdrop-filter: blur(8px);
-    background-blend-mode: multiply;
   }
 
   .mobile-footer {
-    @apply fixed bottom-0 left-0 right-0 border-t z-10 bg-gradient-to-r from-[#1a3261]/90 to-[#366bb1]/90;
+    @apply fixed bottom-0 left-0 right-0 border-t z-10 bg-primary/90 text-white;
     backdrop-filter: blur(8px);
     box-shadow: 0 0 24px 0 rgba(16, 31, 74, 0.2);
   }
 
   .book-item {
-    @apply border-none rounded-xl bg-library-glass/80 mb-3 shadow-md p-4 flex;
-    backdrop-filter: blur(4px);
-    background: linear-gradient(120deg,rgba(255,255,255,0.18) 70%,rgba(255,255,255,0.10) 100%);
+    @apply border-none rounded-xl bg-card mb-3 shadow-md p-4 flex;
+    transition: transform 0.2s ease-in-out;
   }
 
-  .book-detail-section {
-    @apply mb-5 rounded-xl bg-library-glass/70 shadow p-4;
-    backdrop-filter: blur(4px);
+  .book-item:hover {
+    transform: scale(1.02);
   }
 
   .sidebar-menu {
-    @apply fixed inset-y-0 left-0 z-50 bg-[#14366a]/98 w-4/5 max-w-xs shadow-2xl;
-    color: #f7fafc;
+    @apply fixed inset-y-0 left-0 z-50 bg-primary/90 w-4/5 max-w-xs shadow-2xl text-white;
   }
 
-  .glass {
-    background: linear-gradient(120deg, rgba(255,255,255,0.21) 80%,rgba(255,255,255,0.13) 100%);
-    box-shadow: 0 4px 32px 0 rgba(30,36,62,.20);
-    border-radius: 1rem;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  .input, input, .input-glass {
-    @apply bg-[#22437a]/80 text-white placeholder:text-blue-100 border-blue-300 focus:border-blue-100 focus:ring-2 focus:ring-blue-200;
-    box-shadow: 0 1px 6px 0 rgba(16,31,74,0.07) !important;
-    border-radius: 0.75rem !important;
-    border-width: 1px;
-    backdrop-filter: blur(4px);
-  }
-  
-  .searchbox-glass {
-    @apply bg-[#224786]/50 text-white border border-blue-100 focus:ring-blue-200;
+  .input, input {
+    @apply bg-accent text-foreground border-primary/50 focus:border-primary focus:ring-2 focus:ring-primary/50;
     border-radius: 0.75rem;
-    box-shadow: 0 5px 22px 0 rgba(30,36,62,.14);
-    backdrop-filter: blur(3.5px);
-  }
-
-  .section-padding {
-    @apply px-4 py-6;
-  }
-
-  .hero-text {
-    @apply text-3xl font-heading text-white mb-3;
-    letter-spacing: -1px;
-    line-height: 1.1;
-    font-weight: 700;
-  }
-  .hero-desc {
-    @apply text-base mb-6 text-blue-100;
-  }
-
-  .section-title {
-    @apply font-heading text-2xl text-white mb-4;
-    letter-spacing: -1px;
-    font-weight: 600;
-  }
-
-  .card-bg {
-    background: linear-gradient(120deg, #27457b 60%, #3a6bc2 100%);
-    @apply rounded-xl shadow-lg;
-    color: #f7fafc;
   }
 }
 
 @layer utilities {
-  /* Explicitly escape the forward slashes in class names */
-  .bg-\[\#14366a\]\/98 {
-    background-color: rgba(20, 54, 106, 0.98);
+  /* Utility classes for specific opacity and color combinations */
+  .bg-primary-soft {
+    @apply bg-primary/10;
   }
 
-  .bg-\[\#153563\]\/90 {
-    background-color: rgba(21, 53, 99, 0.90);
-  }
-
-  .bg-\[\#1a3261\]\/90 {
-    background-color: rgba(26, 50, 97, 0.90);
-  }
-
-  .bg-\[\#366bb1\]\/90 {
-    background-color: rgba(54, 107, 177, 0.90);
-  }
-
-  .bg-\[\#22437a\]\/80 {
-    background-color: rgba(34, 67, 122, 0.80);
-  }
-
-  .bg-\[\#224786\]\/50 {
-    background-color: rgba(34, 71, 134, 0.50);
-  }
-
-  .bg-\[\#32508b\]\/90 {
-    background-color: rgba(50, 80, 139, 0.90);
-  }
-
-  .bg-\[\#142e52\]\/70 {
-    background-color: rgba(20, 46, 82, 0.70);
+  .text-primary-dark {
+    @apply text-primary/90;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white font-semibold rounded-xl py-3 mt-3 shadow-lg hover:bg-blue-800 transition-colors;
+    @apply bg-primary text-white font-semibold rounded-xl py-3 mt-3 shadow-lg hover:bg-primary/80 transition-colors;
   }
+
   .btn-glass {
-    @apply bg-[#22437a]/80 text-white border-blue-300 px-4 rounded-xl py-2 hover:bg-[#32508b]/90 transition;
+    @apply bg-primary/20 text-primary border border-primary/30 px-4 rounded-xl py-2 hover:bg-primary/30 transition;
     backdrop-filter: blur(2.5px);
-  }
-  .badge-primary {
-    @apply bg-library-glass/60 text-white rounded-lg px-3 py-1;
-    backdrop-filter: blur(2px);
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .input-glass {
-    @apply bg-[#142e52]/70 text-white border-blue-200 rounded-lg px-3 py-2;
-    border: 1px solid #295697;
-    backdrop-filter: blur(3px);
   }
 }
