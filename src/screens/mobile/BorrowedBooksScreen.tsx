@@ -38,7 +38,12 @@ const BorrowedBooksScreen: React.FC = () => {
             <FlatList
               data={borrowedBooks}
               keyExtractor={item => item.id}
-              renderItem={({ item }) => <BookItem {...item} />}
+              renderItem={({ item }) => (
+                <BookItem 
+                  book={item} 
+                  onPress={() => console.log(`Book ${item.id} pressed`)} 
+                />
+              )}
               contentContainerStyle={styles.bookList}
             />
           </>

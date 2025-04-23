@@ -61,7 +61,12 @@ const HomeScreen: React.FC = () => {
           <FlatList
             data={featuredBooks}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <BookItem {...item} />}
+            renderItem={({ item }) => (
+              <BookItem 
+                book={item} 
+                onPress={() => console.log(`Book ${item.id} pressed`)} 
+              />
+            )}
             scrollEnabled={false}
           />
         </View>
@@ -71,7 +76,12 @@ const HomeScreen: React.FC = () => {
           <FlatList
             data={popularBooks}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <BookItem {...item} />}
+            renderItem={({ item }) => (
+              <BookItem 
+                book={item} 
+                onPress={() => console.log(`Book ${item.id} pressed`)} 
+              />
+            )}
             scrollEnabled={false}
           />
         </View>

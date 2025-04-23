@@ -152,7 +152,12 @@ const SearchScreen: React.FC = () => {
       <FlatList
         data={searchResults}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => <BookItem {...item} />}
+        renderItem={({ item }) => (
+          <BookItem 
+            book={item} 
+            onPress={() => console.log(`Book ${item.id} pressed`)} 
+          />
+        )}
         contentContainerStyle={styles.resultsList}
       />
       
