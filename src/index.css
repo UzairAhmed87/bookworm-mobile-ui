@@ -9,7 +9,79 @@
     --foreground: 220 70% 20%; /* Dark blue text */
 
     --card: 220 70% 95%; /* Very light blue for cards */
-    --card-foreground: 220 70% 20%;\n\n    --primary: 220 70% 40%; /* Vibrant blue for primary elements */
-    --primary-foreground: 0 0% 100%;\n\n    --secondary: 220 50% 80%; /* Softer blue for secondary elements */
-    --secondary-foreground: 220 70% 20%;\n\n    --accent: 220 70% 90%; /* Light blue accent */
-    --accent-foreground: 220 70% 20%;\n  }\n\n  body {\n    @apply bg-background text-foreground font-sans;\n    min-height: 100vh;\n  }\n\n  .mobile-container {\n    @apply max-w-md mx-auto pb-16 min-h-screen relative bg-white;\n  }\n\n  .mobile-header {\n    @apply sticky top-0 z-10 bg-primary/90 border-b px-4 py-3 flex items-center justify-between text-white;\n    backdrop-filter: blur(8px);\n  }\n\n  .mobile-footer {\n    @apply fixed bottom-0 left-0 right-0 border-t z-10 bg-primary/90 text-white;\n    backdrop-filter: blur(8px);\n    box-shadow: 0 0 24px 0 rgba(16, 31, 74, 0.2);\n  }\n\n  .book-item {\n    @apply border-none rounded-xl bg-card mb-3 shadow-md p-4 flex;\n    transition: transform 0.2s ease-in-out;\n  }\n\n  .book-item:hover {\n    transform: scale(1.02);\n  }\n\n  .sidebar-menu {\n    @apply fixed inset-y-0 left-0 z-50 bg-primary/90 w-4/5 max-w-xs shadow-2xl text-white;\n  }\n\n  .input, input {\n    @apply bg-accent text-foreground border-primary/50 focus:border-primary focus:ring-2 focus:ring-primary/50;\n    border-radius: 0.75rem;\n  }\n}\n\n@layer utilities {\n  .bg-accent {\n    background-color: hsl(var(--accent));\n  }\n\n  /* Existing utility classes */\n  .bg-primary-soft {\n    @apply bg-primary/10;\n  }\n\n  .text-primary-dark {\n    @apply text-primary/90;\n  }\n}\n\n@layer components {\n  .btn-primary {\n    @apply bg-primary text-white font-semibold rounded-xl py-3 mt-3 shadow-lg hover:bg-primary/80 transition-colors;\n  }\n\n  .btn-glass {\n    @apply bg-primary/20 text-primary border border-primary/30 px-4 rounded-xl py-2 hover:bg-primary/30 transition;\n    backdrop-filter: blur(2.5px);\n  }\n}
+    --card-foreground: 220 70% 20%;
+
+    --primary: 220 70% 40%; /* Vibrant blue for primary elements */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 50% 80%; /* Softer blue for secondary elements */
+    --secondary-foreground: 220 70% 20%;
+
+    --accent: 220 70% 90%; /* Light blue accent */
+    --accent-foreground: 220 70% 20%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    min-height: 100vh;
+  }
+
+  .mobile-container {
+    @apply max-w-md mx-auto pb-16 min-h-screen relative bg-white;
+  }
+
+  .mobile-header {
+    @apply sticky top-0 z-10 bg-primary/90 border-b px-4 py-3 flex items-center justify-between text-white;
+    backdrop-filter: blur(8px);
+  }
+
+  .mobile-footer {
+    @apply fixed bottom-0 left-0 right-0 border-t z-10 bg-primary/90 text-white;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 24px 0 rgba(16, 31, 74, 0.2);
+  }
+
+  .book-item {
+    @apply border-none rounded-xl bg-card mb-3 shadow-md p-4 flex;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .book-item:hover {
+    transform: scale(1.02);
+  }
+
+  .sidebar-menu {
+    @apply fixed inset-y-0 left-0 z-50 bg-primary/90 w-4/5 max-w-xs shadow-2xl text-white;
+  }
+
+  .input, input {
+    @apply bg-accent text-foreground border-primary/50 focus:border-primary focus:ring-2 focus:ring-primary/50;
+    border-radius: 0.75rem;
+  }
+}
+
+@layer utilities {
+  .bg-accent {
+    background-color: hsl(var(--accent));
+  }
+
+  /* Existing utility classes */
+  .bg-primary-soft {
+    @apply bg-primary/10;
+  }
+
+  .text-primary-dark {
+    @apply text-primary/90;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white font-semibold rounded-xl py-3 mt-3 shadow-lg hover:bg-primary/80 transition-colors;
+  }
+
+  .btn-glass {
+    @apply bg-primary/20 text-primary border border-primary/30 px-4 rounded-xl py-2 hover:bg-primary/30 transition;
+    backdrop-filter: blur(2.5px);
+  }
+}
